@@ -11,7 +11,6 @@ const Signpage = () => {
     e.preventDefault();
     const { email, password } = e.target.elements;
     const isUserExist = users.find((user) => user.email === email.value);
-    console.log(isUserExist);
     if (isUserExist) {
       alert("User Already Exist");
       navigate("/login");

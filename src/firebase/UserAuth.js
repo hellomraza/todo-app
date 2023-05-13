@@ -3,6 +3,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { addDoc, getDocs } from "firebase/firestore";
+import { Navigate } from "react-router";
 import { auth, collectionRef } from ".";
 
 const UserAuthentication = {
@@ -39,11 +40,13 @@ const UserAuthentication = {
       });
   },
   LoginUser: async ({ email, password }) => {
+    console.log("login");
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const { user } = userCredential;
         console.log(user);
         console.log("User Logged In");
+        return <Navigate to="/  " />;
       })
       .catch((error) => {
         const errorCode = error.code;

@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import UserAuthentication from "../firebase/UserAuth";
+import { AppContext } from "../utils/AppContext";
 
 const LoginPage = () => {
+  const { currentUser } = useContext(AppContext);
+  const navigate = useNavigate();
   const onSubmit = (e) => {
     e.preventDefault();
     const { email, password } = e.target.elements;
@@ -10,6 +14,9 @@ const LoginPage = () => {
       password: password.value,
     });
   };
+  // useEffect(() => {
+  //   if (currentUser) navigate("/");
+  // });
   return (
     <div>
       <h1>Login Page</h1>
